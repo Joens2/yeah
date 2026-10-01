@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Favorites</title>
+        <style>
+            :root {
+                --box-padding: 24px;
+                --section-gap: 24px;
+            }
+            body {
+                background-color: #000000;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px 18px 60px;
+                color: #e6e6e6;
+            }
+            header.top-nav {
+                display: block;
+                background-color: #1f1f1f;
+                padding: 22px 26px;
+                margin: 0 auto 18px auto;
+                border: 2px solid #3a3a3a;
+                border-radius: 10px;
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 4px 10px rgba(0, 0, 0, 0.25);
+                width: min(90vw, 1100px);
+                text-align: center;
+            }
+            .top-nav {
+                width: min(90vw, 1100px);
+            }
+            .top-nav h1,
+            .top-nav h2 {
+                margin: 0 auto 12px auto;
+                text-align: center;
+            }
+            section {
+                background-color: #1f1f1f;
+                padding: 20px 24px;
+                margin: 0 auto 18px auto;
+                border: 2px solid #3a3a3a;
+                border-radius: 10px;
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 4px 10px rgba(0, 0, 0, 0.25);
+                width: min(90vw, 1100px);
+            }
+            h1, h2, h3 {
+                color: #f0f0f0;
+            }
+            .ranking {
+                text-align: center;
+            }
+            .ranking ol {
+                display: inline-block;
+                margin: 0 auto;
+                padding-left: 24px;
+                text-align: left;
+            }
+            .section-box {
+                background-color: #1f1f1f;
+                padding: 20px var(--box-padding);
+                margin: 0 auto 18px auto;
+                border: 2px solid #3a3a3a;
+                border-radius: 10px;
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 4px 10px rgba(0, 0, 0, 0.25);
+                width: min(90vw, 1100px);
+                text-align: center;
+            }
+            .section-title {
+                background-color: #1f1f1f;
+                padding: 18px 24px 10px;
+                margin: 0 auto 12px auto;
+                border: 2px solid #3a3a3a;
+                border-radius: 10px;
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 4px 10px rgba(0, 0, 0, 0.25);
+                width: min(90vw, 1100px);
+                text-align: center;
+            }
+            footer {
+                background-color: #1f1f1f;
+                padding: 18px 24px 10px;
+                margin: 0 auto 18px auto;
+                border: 2px solid #3a3a3a;
+                border-radius: 10px;
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 4px 10px rgba(0, 0, 0, 0.25);
+                width: min(90vw, 1100px);
+                text-align: center;
+                box-sizing: border-box;
+            }
+            footer p {
+                margin: 0;
+                font-size: 1.1rem;
+                color: #f0f0f0;
+            }
+            .section-content {
+                display: flex;
+                justify-content: center;
+                align-items: stretch;
+                gap: var(--section-gap);
+                text-align: left;
+                margin-top: 8px;
+                width: min(100%, 820px);
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .section-panel {
+                background-color: #111111;
+                border: 2px solid #3a3a3a;
+                border-radius: 10px;
+                padding: 18px 20px;
+                flex: 1 1 280px;
+                max-width: 360px;
+                min-height: 180px;
+                box-sizing: border-box;
+            }
+            .section-box h2,
+            .section-box h3,
+            .section-box p,
+            .section-box li,
+            .section-title h2,
+            .section-title h3,
+            .section-title p,
+            .section-title li {
+                font-family: Arial, sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+            .section-title h2,
+            .section-box h2,
+            .section-box h3 {
+                margin: 0 0 10px 0;
+                font-size: 1.35rem;
+                line-height: 1.2;
+            }
+            .section-box p {
+                margin: 0 0 8px 0;
+                font-size: 1.1rem;
+            }
+            .section-box ul {
+                margin: 0;
+                list-style: none;
+                padding: 0;
+            }
+            .section-box ol {
+                display: inline-block;
+                margin: 0;
+                padding-left: 24px;
+                text-align: left;
+            }
+            .section-column {
+                min-width: 220px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                flex: 0 0 260px;
+                padding-top: 0;
+            }
+            .section-column h2 {
+                margin-top: 0;
+            }
+            .section-panel h2 {
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
+            a {
+                color: #d9d9d9;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            .movie,
+            .game,
+            .food,
+            .music {
+                display: flex;
+                align-items: stretch;
+                gap: 22px;
+                justify-content: center;
+                min-height: 360px;
+            }
+            .movie article,
+            .game article,
+            .food article,
+            .music article {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 22px;
+                width: min(100%, 1100px);
+            }
+            .movie img,
+            .game img,
+            .food img,
+            .music img {
+                flex-shrink: 0;
+                width: 240px;
+                height: auto;
+                border-radius: 8px;
+                object-fit: cover;
+            }
+            figure {
+                margin: 0;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 240px;
+                flex-shrink: 0;
+            }
+            figcaption {
+                margin-top: 8px;
+                font-weight: bold;
+                color: #f0f0f0;
+                text-align: center;
+            }
+            .movie-content,
+            .game-content,
+            .food-content,
+            .music-content {
+                flex: 1;
+                max-width: 760px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .movie-content p,
+            .game-content p,
+            .food-content p,
+            .music-content p {
+                margin: 0;
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="top-nav">
+            <h1>My Personal Favorites</h1>
+            <nav aria-label="Main navigation">
+                <p>Contains:</p>
+                <ul>
+                    <li><a href="#movies">Movies</a></li>
+                    <li><a href="#food">Food</a></li>
+                    <li><a href="#music">Music</a></li>
+                    <li><a href="#games">Games</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="section-title" id="movies">
+            <h2>Section : Movies</h2>
+        </div>
+        <div class="section-box">
+            <div class="section-content">
+                <div class="section-panel">
+                    <p>Contains:</p>
+                    <ul>
+                        <li>The Godfather</li>
+                        <li>Inception</li>
+                        <li>The Dark Knight</li>
+                    </ul>
+                </div>
+                <div class="section-panel">
+                    <h2>My personal ranking.</h2>
+                    <ol>
+                        <li><h3>The Godfather</h3></li>
+                        <li><h3>Inception</h3></li>
+                        <li><h3>The Dark Knight</h3></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <section class="movie">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg" alt="The Godfather" width="200" height="300">
+                    <figcaption>The Godfather (1972)</figcaption>
+                </figure>
+                <div class="movie-content">
+                    <h2><a href="https://www.google.com/goto?url=CAESYwHrOzAVkeTl7Ir9cXTnwfd055y7p0mwfjRKXCe_aLZsbwJheFGy9JGRdPks_OjKYh0plCu55vL5V7ZWKBcWO7h1Lm-7VaFT52zQDdq2oD7fL1BnUngh5hrHZ7XwIcNgEVCKOQ" target="_blank">The Godfather</a></h2>
+                    <p> The Godfather is a 1972 American crime film directed by Francis Ford Coppola and produced by Albert S. Ruddy, based on Mario Puzo's best-selling novel of the same name. The film stars Marlon Brando, Al Pacino, James Caan, Richard S. Castellano, Robert Duvall, Sterling Hayden, John Marley, Richard Conte, and Diane Keaton. It is the first installment in The Godfather trilogy and is widely regarded as one of the greatest films in world cinema and as one of the most influential, especially in the gangster genre.
+                    </p>
+                </div>
+            </article>
+        </section>
+        <section class="movie">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg" alt="Inception" width="200" height="300">
+                    <figcaption>Inception (2010)</figcaption>
+                </figure>
+                <div class="movie-content">
+                    <h2><a href="https://www.google.com/goto?url=CAESYwHrOzAVNStKavZSvymJi9KKzWGRTnu7bLVVFTCMVS7Ze5SkFTYhO8JuuCQQXem9Zc2eRD8YvUwzDYwkAnba8ipKB_7frDiKn-N6-gzuSCft9cqedgi7Pzfu5hiN-X6-wa06qA" target="_blank">Inception</a></h2>
+                    <p> Inception is a 2010 science fiction action film written and directed by Christopher Nolan, who also produced the film with Emma Thomas, his wife. The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating the subconscious of his targets. He is offered a chance to have his criminal history erased as payment for the implantation of another person's idea into a target's subconscious.
+                    </p>
+                </div>
+            </article>
+        </section>
+        <section class="movie">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="The Dark Knight" width="200" height="300">
+                    <figcaption>The Dark Knight (2008)</figcaption>
+                </figure>
+                <div class="movie-content">
+                    <h2><a href="https://www.google.com/goto?url=CAESYwHrOzAVVXnUen6qXFdf3Rylw7jdMxcxIMllF_JjHOlLCsPzHAB6zeuWbPLndHJtBNTghopI5sb5FUiMIctit2seFg3k1f92SoMGVOhq1h_-DIpcsyEH5f_NIj5mCA1u5G7CWg" target="_blank">The Dark Knight</a></h2>
+                    <p> The Dark Knight is a 2008 superhero film directed, produced, and co-written by Christopher Nolan. Based on the DC Comics character Batman, the film is the second installment of Nolan's The Dark Knight Trilogy and a sequel to 2005's Batman Begins. It stars Christian Bale as Bruce Wayne / Batman, Heath Ledger as the Joker, Aaron Eckhart as Harvey Dent / Two-Face, Michael Caine as Alfred Pennyworth, Maggie Gyllenhaal as Rachel Dawes, Gary Oldman as James Gordon, and Morgan Freeman as Lucius Fox.
+                    </p>
+                </div>
+            </article>
+        </section>
+
+        <div class="section-title" id="food">
+            <h2>Section : Food</h2>
+        </div>
+        <div class="section-box">
+            <div class="section-content">
+                <div class="section-panel">
+                    <p>Contains:</p>
+                    <ul>
+                        <li>Pizza</li>
+                        <li>Burgers</li>
+                        <li>Sushi</li>
+                    </ul>
+                </div>
+                <div class="section-panel">
+                    <h2>My personal ranking.</h2>
+                    <ol>
+                        <li><h3>Pizza</h3></li>
+                        <li><h3>Burgers</h3></li>
+                        <li><h3>Sushi</h3></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <section class="food">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg" alt="Pizza" width="200" height="200">
+                    <figcaption>Pizza</figcaption>
+                </figure>
+                <div class="food-content">
+                    <h2><a href="https://www.google.com/goto?url=CAESYwHrOzAVVXnUen6qXFdf3Rylw7jdMxcxIMllF_JjHOlLCsPzHAB6zeuWbPLndHJtBNTghopI5sb5FUiMIctit2seFg3k1f92SoMGVOhq1h_-DIpcsyEH5f_NIj5mCA1u5G7CWg" target="_blank">Pizza</a></h2>
+                    <p>Pizza is a popular Italian dish that consists of a usually round, flat base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients (such as anchovies, mushrooms, onions, olives, vegetables, meat, etc.), which is then baked at a high temperature, traditionally in a wood-fired oven. The term "pizza" was first recorded in the 10th century in a Latin manuscript from the southern Italian town of Gaeta in Lazio, on the border with Campania. Pizza has since become one of the most popular foods worldwide.</p>
+                </div>
+            </article>
+        </section>
+        <section class="food">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/RedDot_Burger.jpg" alt="Burgers" width="200" height="200">
+                    <figcaption>Burgers</figcaption>
+                </figure>
+                <div class="food-content">
+                    <h2><a href="https://www.google.com/goto?url=CAESYwHrOzAVVXnUen6qXFdf3Rylw7jdMxcxIMllF_JjHOlLCsPzHAB6zeuWbPLndHJtBNTghopI5sb5FUiMIctit2seFg3k1f92SoMGVOhq1h_-DIpcsyEH5f_NIj5mCA1u5G7CWg" target="_blank">Burgers</a></h2>
+                    <p>Burgers are a type of food consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bun. Burgers are often served with lettuce, tomato, onion, and various other toppings. They are commonly eaten as a main course.</p>
+                </div>
+            </article>
+        </section>
+        <section class="food">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Sushi_platter.jpg" alt="Sushi" width="200" height="200">
+                    <figcaption>Sushi</figcaption>
+                </figure>
+                <div class="food-content">
+                    <h2><a href="https://www.google.com/goto?url=CAESYwHrOzAVVXnUen6qXFdf3Rylw7jdMxcxIMllF_JjHOlLCsPzHAB6zeuWbPLndHJtBNTghopI5sb5FUiMIctit2seFg3k1f92SoMGVOhq1h_-DIpcsyEH5f_NIj5mCA1u5G7CWg" target="_blank">Sushi</a></h2>
+                    <p>Sushi is a Japanese dish consisting of vinegared rice combined with other ingredients such as seafood, vegetables, and sometimes tropical fruits. It is typically served with soy sauce, wasabi, and pickled ginger.</p>
+                </div>
+            </article>
+        </section>
+
+        <div class="section-title" id="music">
+            <h2>Section : Music</h2>
+        </div>
+        <div class="section-box">
+            <div class="section-content">
+                <div class="section-panel">
+                    <p>Contains:</p>
+                    <ul>
+                        <li>Rock</li>
+                        <li>Pop</li>
+                        <li>Classical</li>
+                    </ul>
+                </div>
+                <div class="section-panel">
+                    <h2>My personal ranking.</h2>
+                    <ol>
+                        <li><h3>Rock</h3></li>
+                        <li><h3>Pop</h3></li>
+                        <li><h3>Classical</h3></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <section class="music">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Rhcp-live-pinkpop05.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="Rock" width="200" height="200">
+                    <figcaption>Rock</figcaption>
+                </figure>
+                <div class="music-content">
+                    <h2>Rock</h2>
+                    <p>Rock is a genre of popular music that originated as a reaction to the cultural, social, and political movements of the 1960s. It is built on guitar-driven melodies, powerful rhythms, and strong lyrical expression, often blending blues, folk, and punk influences. Rock music has shaped generations of artists and has remained one of the most influential genres in modern music.</p>
+                </div>
+            </article>
+        </section>
+        <section class="music">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Amr_Diab_at_World_Music_Awards_2007.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="Pop" width="200" height="200">
+                    <figcaption>Pop</figcaption>
+                </figure>
+                <div class="music-content">
+                    <h2>Pop</h2>
+                    <p>Pop music is a genre of popular music that originated in its modern form during the mid-1950s in the United States and the United Kingdom. It emphasizes catchy hooks, memorable melodies, and wide accessibility, making it highly adaptable across radio, streaming, and visual media. Pop artists often blend elements of dance, electronic, R&amp;B, and rock to create music that resonates with a broad audience.</p>
+                </div>
+            </article>
+        </section>
+        <section class="music">
+            <article>
+                <figure>
+                    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/BJO_Konzert_Phil_MR_098.jpg/1920px-BJO_Konzert_Phil_MR_098.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="Classical" width="200" height="200">
+                    <figcaption>Classical</figcaption>
+                </figure>
+                <div class="music-content">
+                    <h2>Classical</h2>
+                    <p>Classical music is a genre of music that was developed in the Western world, primarily for concert performance. It includes orchestral works, chamber music, and solo compositions created over centuries by composers such as Beethoven, Mozart, and Bach. Classical music is known for its structure, harmony, and emotional depth, and it continues to influence film scores, modern composition, and cultural traditions around the world.</p>
+                </div>
+            </article>
+        </section>
+
+        <div class="section-title" id="games">
+            <h2>Section : Games</h2>
+        </div>
+        <div class="section-box">
+            <div class="section-content">
+                <div class="section-panel">
+                    <p>Contains:</p>
+                    <ul>
+                        <li>The Legend of Zelda: Breath of the Wild</li>
+                        <li>Red Dead Redemption 2</li>
+                        <li>The Witcher 3: Wild Hunt</li>
+                    </ul>
+                </div>
+                <div class="section-panel">
+                    <h2>My personal ranking.</h2>
+                    <ol>
+                        <li><h3>The Legend of Zelda: Breath of the Wild</h3></li>
+                        <li><h3>Red Dead Redemption 2</h3></li>
+                        <li><h3>The Witcher 3: Wild Hunt</h3></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <section class="game">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="The Legend of Zelda: Breath of the Wild" width="200" height="300">
+                    <figcaption>The Legend of Zelda: Breath of the Wild (2017)</figcaption>
+                </figure>
+                <div class="game-content">
+                    <h2><a href="https://www.google.com/goto?url=CAESYwHrOzAVVXnUen6qXFdf3Rylw7jdMxcxIMllF_JjHOlLCsPzHAB6zeuWbPLndHJtBNTghopI5sb5FUiMIctit2seFg3k1f92SoMGVOhq1h_-DIpcsyEH5f_NIj5mCA1u5G7CWg" target="_blank">The Legend of Zelda: Breath of the Wild</a></h2>
+                    <p>The Legend of Zelda: Breath of the Wild is a 2017 action-adventure video game developed and published by Nintendo for the Nintendo Switch and Wii U. It is the sequel to 2011's The Legend of Zelda: Skyward Sword and the 19th mainline installment in the Zelda franchise. The game takes place in an expansive open world filled with mountains, forests, deserts, ruins, and a variety of enemies and shrines to explore. Players control Link as he wakes in a ruined kingdom, explores the world, solves environmental puzzles, gathers equipment, and uncovers the story of the kingdom's fall. The game is widely praised for its freedom, breathtaking world design, emotional storytelling, and innovative mechanics, making it one of the most influential and beloved games of its generation.</p>
+                </div>
+            </article>
+        </section>
+        <section class="game">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="Red Dead Redemption 2" width="200" height="300">
+                    <figcaption>Red Dead Redemption 2 (2018)</figcaption>
+                </figure>
+                <div class="game-content">
+                    <h2><a href="https://www.google.com/goto?url=CAESYwHrOzAVVXnUen6qXFdf3Rylw7jdMxcxIMllF_JjHOlLCsPzHAB6zeuWbPLndHJtBNTghopI5sb5FUiMIctit2seFg3k1f92SoMGVOhq1h_-DIpcsyEH5f_NIj5mCA1u5G7CWg" target="_blank">Red Dead Redemption 2</a></h2>
+                    <p>Red Dead Redemption 2 is a 2018 action-adventure game developed and published by Rockstar Games. It is the third entry in the Red Dead series and a prequel to the 2010 game Red Dead Redemption. The game is set in a fictionalized representation of the Western, Midwestern, and Southern United States in 1899 and follows outlaw Arthur Morgan, a member of the Van der Linde gang. Players can explore the open world, engage in gunfights, hunt wildlife, interact with non-playable characters, and complete story missions. The game received critical acclaim for its narrative, characters, open world design, and attention to detail, becoming one of the best-selling video games of all time.</p>
+                </div>
+            </article>
+        </section>
+        <section class="game">
+            <article>
+                <figure>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Witcher_3_cover_art.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled" alt="The Witcher 3: Wild Hunt" width="200" height="300">
+                    <figcaption>The Witcher 3: Wild Hunt (2015)</figcaption>
+                </figure>
+                <div class="game-content">
+                    <h2><a href="https://www.google.com/goto?url=CAESYwHrOzAVVXnUen6qXFdf3Rylw7jdMxcxIMllF_JjHOlLCsPzHAB6zeuWbPLndHJtBNTghopI5sb5FUiMIctit2seFg3k1f92SoMGVOhq1h_-DIpcsyEH5f_NIj5mCA1u5G7CWg" target="_blank">The Witcher 3: Wild Hunt</a></h2>
+                    <p>The Witcher 3: Wild Hunt is a 2015 action role-playing game developed and published by CD Projekt. It is the third installment in The Witcher series, based on the book series of the same name by Andrzej Sapkowski. Players control Geralt of Rivia, a monster hunter known as a Witcher, as he searches for his adopted daughter in a war-torn world filled with political intrigue, dangerous creatures, and morally complex choices. The game features an open world with dynamic weather, a day-night cycle, and a rich narrative that adapts to player decisions. The Witcher 3 received universal acclaim for its storytelling, world-building, and gameplay mechanics, earning numerous Game of the Year awards and becoming one of the most celebrated video games of all time.</p>
+                </div>
+            </article>
+        </section>
+
+        <footer>
+            <p>My personal favorites collection.</p>
+        </footer>
+
+    </body>
+</html>
